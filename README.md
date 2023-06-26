@@ -20,6 +20,7 @@
 <br>
 <p>
 <ol>Improvements (TODO)
+<li>API returns lots of information regarding events, create a user journey to show all information</li>
 <li>Add more unit tests</li>
 <li>Delete event details from database after certain time to fetch new event details (using WorkManger)</li>
 <li>UI enhancement</li></ol>
