@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EventDiscovery</string>
+
+    <string name="generic_price">%1$s : %2$s</string>
+</resources>

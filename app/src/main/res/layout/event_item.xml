@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="event"
+            type="com.robo.eventdiscovery.model.Event" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivEvent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/eventDetailsLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/eventDetailsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivEvent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvTitleEvent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/navy_900"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@{event.name}"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvEventDate"
+                tools:text="Event Title" />
+
+            <TextView
+                android:id="@+id/tvEventDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/navy_700"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@{event.dates.start.dateTime.toString()}"
+                app:layout_constraintTop_toBottomOf="@id/tvTitleEvent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTitleEvent"
+                tools:text="Date"/>
+
+            <TextView
+                android:id="@+id/tvEventMinPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/green_500"
+                android:textSize="12sp"
+                android:text='@{String.format("Min %s %s", event.priceRanges[0].currency ,event.priceRanges[0].min)}'
+                android:textAlignment="viewStart"
+                app:layout_constraintTop_toBottomOf="@id/tvEventDate"
+                app:layout_constraintEnd_toStartOf="@id/tvEventMaxPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Min Price" />
+
+            <TextView
+                android:id="@+id/tvEventMaxPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/green_300"
+                android:textSize="12sp"
+                android:textAlignment="viewEnd"
+                android:text='@{String.format("Max %s %s", event.priceRanges[0].currency ,event.priceRanges[0].max)}'
+                app:layout_constraintTop_toBottomOf="@id/tvEventDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvEventMinPrice"
+                tools:text="Max Price"/>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvEventMaxPrice,tvEventMinPrice"/>
+
+            <TextView
+                android:id="@+id/tvPleaseNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/navy_500"
+                android:textSize="10sp"
+                android:text='@{event.pleaseNote}'
+                android:textAlignment="viewStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier"
+                tools:text="Note" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
