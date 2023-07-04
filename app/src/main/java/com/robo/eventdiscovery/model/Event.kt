@@ -1,5 +1,8 @@
 package com.robo.eventdiscovery.model
 
+/*
+* Event model class
+* */
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date

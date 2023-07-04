@@ -17,6 +17,12 @@ class MainViewModel(private val database: EventDatabase): ViewModel() {
     private val _searchedEvents = MutableLiveData<List<Event>>()
     val filteredEventsLiveData: LiveData<List<Event>> get() = _searchedEvents
 
+    /* Get event details
+    * Do API call to get latest events
+    * Store API response in database
+    *
+    * TODO: delete database records after 1 day to get new events details from API
+    * */
     fun getEventDetails() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
@@ -35,6 +41,11 @@ class MainViewModel(private val database: EventDatabase): ViewModel() {
         }
     }
 
+    /* Search event
+    * search event from the database
+    * uses sql query to search database records
+    * THIS CAN BE AN EXPENSIVE OPERATION: INSTEAD USE LIST ADAPTER FILTER
+    *  */
     fun getEvents(searchText: String) {
         viewModelScope.launch {
             val searchedResult = mutableListOf<Event>()

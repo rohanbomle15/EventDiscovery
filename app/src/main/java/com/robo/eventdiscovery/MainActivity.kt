@@ -46,7 +46,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupView() {
         val binding = requireBinding()
         binding.rvEvents.layoutManager = GridLayoutManager(this, 1)
-        adapter = EventAdapter(application.applicationContext, eventList)
+        adapter = EventAdapter(application.applicationContext)
+        adapter.submitList(eventList)
         binding.rvEvents.addItemDecoration(
             DividerItemDecoration(
                 binding.rvEvents.context,
@@ -64,7 +65,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 s?.let {
-                    viewModel.getEvents(searchText = it.toString())
+                    //viewModel.searchEvent(searchText = it.toString())
+                    adapter.filter.filter(it.toString())
                 }
             }
         })
@@ -102,6 +104,6 @@ class MainActivity : AppCompatActivity() {
     private fun updateListView(list: List<Event>) {
         eventList.clear()
         eventList.addAll(list)
-        adapter.notifyDataSetChanged()
+        adapter.submitList(eventList)
     }
 }
