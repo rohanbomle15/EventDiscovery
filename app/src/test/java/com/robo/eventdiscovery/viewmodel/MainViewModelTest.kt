@@ -2,8 +2,6 @@ package com.robo.eventdiscovery.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import androidx.test.core.app.ApplicationProvider
-import com.robo.eventdiscovery.database.EventDatabase
 import com.robo.eventdiscovery.model.*
 import okhttp3.internal.http.HTTP_OK
 import okhttp3.mockwebserver.MockResponse
