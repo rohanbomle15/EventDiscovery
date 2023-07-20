@@ -16,9 +16,11 @@ class MainViewModel @Inject constructor(private val repository: ProductRepositor
     val productsLiveData : LiveData<List<Product>>
         get() = repository.products
 
+    val requestInProgress : LiveData<Boolean>
+        get() = repository.loadingStatus
+
     init {
         viewModelScope.launch {
-            delay(10000)
             repository.getProducts()
         }
     }

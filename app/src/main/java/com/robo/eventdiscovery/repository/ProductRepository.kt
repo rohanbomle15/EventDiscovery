@@ -12,11 +12,17 @@ class ProductRepository @Inject constructor(private val productAPI: ProductAPI) 
     val products: LiveData<List<Product>>
         get() = _products
 
+    private val _loadingStatus = MutableLiveData<Boolean>()
+    val loadingStatus: LiveData<Boolean> get() = _loadingStatus
+
     suspend fun getProducts(){
+        _loadingStatus.postValue(true)
         val result = productAPI.getProducts()
         if(result.isSuccessful && result.body() != null){
+//            productDB.getProductDAO().addProducts(result.body()!!)
             _products.postValue(result.body())
         }
+        _loadingStatus.postValue(false)
     }
 
 }

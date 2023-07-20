@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.robo.eventdiscovery.model.Product
 
+
 @Dao
 interface ProductDAO {
 

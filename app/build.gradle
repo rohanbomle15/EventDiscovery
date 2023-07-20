@@ -18,6 +18,11 @@ android {
 
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["dagger.hilt.disableModulesHaveInstallInCheck"]="true"
+            }
+        }
     }
 
     buildTypes {
