@@ -5,8 +5,6 @@
 <p>
 <ul><b>This app showcase capabilities of follwoing android components/libraries used</b>
 <li>MVVM design pattern
-   <ul><li>Data Binding: MVVM often utilizes data binding libraries like Android Data Binding or Jetpack's ViewBinding to establish a connection between the View and ViewModel, allowing automatic updating of the UI based on data changes.<li>
-
 <li>Observable Properties or LiveData: The ViewModel exposes observable properties or LiveData objects to the View. This enables the View to observe changes in the data and automatically update itself.</li>
 
 <li>Testability: MVVM promotes testability by separating the business logic from the UI. Unit tests can be written for the ViewModel to ensure that the logic and data transformations are working correctly.</li></ul>
