@@ -1,7 +1,6 @@
 # EventDiscovery
 
-<p>Single screen app written in Kotlin</p>
-
+## Single screen app written in Kotlin
 <p>
 <ul><b>This app showcase capabilities of follwoing android components/libraries used</b>
 <li>MVVM design pattern
@@ -16,10 +15,6 @@
 <li>JUnit, expresso - for UI/Unit testing</li></ul>
 </p>
 <br>
-<p>
-<ol>Improvements (TODO)
-<li>API returns lots of information regarding events, create a user journey to show all information</li>
-<li>Add more unit tests</li>
-<li>Delete event details from database after certain time to fetch new event details (using WorkManger)</li>
-<li>UI enhancement</li></ol>
-</p>
+
+## App Screenshot
+[imag1.png]
