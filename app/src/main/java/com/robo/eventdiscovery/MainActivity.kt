@@ -3,6 +3,7 @@ package com.robo.eventdiscovery
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +19,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var mainViewModel: MainViewModel
 
     @Inject
     lateinit var mainViewModelFactory: MainViewModelFactory
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         get() = findViewById(R.id.rcProducts)
     private val loadingProgressBar: ProgressBar
         get() = findViewById(R.id.progressBar)
-    lateinit var productAdapter: ProductAdapter
+    private lateinit var productAdapter: ProductAdapter
     private var productList = ArrayList<Product>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,10 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.requestInProgress.observe(this, Observer {
-
+            when(it){
+                true -> loadingProgressBar.visibility = View.VISIBLE
+                false -> loadingProgressBar.visibility = View.GONE
+            }
         })
     }
 
