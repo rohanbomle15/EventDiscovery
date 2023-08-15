@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.robo.eventdiscovery.R
 import com.robo.eventdiscovery.model.Product
 
-
 class ProductAdapter(private val dataSet: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
@@ -24,14 +23,12 @@ class ProductAdapter(private val dataSet: List<Product>) :
         }
     }
 
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.product_item, viewGroup, false)
 
         return ViewHolder(view)
     }
-
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val product = dataSet[position]
