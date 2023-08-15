@@ -66,12 +66,11 @@ class MainActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String): Boolean {
-
+                productAdapter.filter.filter(newText)
                 return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-
                 return false
             }
         })
